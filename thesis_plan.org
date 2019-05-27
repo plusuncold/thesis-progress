@@ -1,0 +1,25 @@
+#+TODO: TODO STARTED FIRST_DRAFT SECOND_DRAFT REVISIONS_DONE COMPLETE
+** TODO Abstract
+** STARTED Misc: Table of contents, lists of figures and tables, references, acknowledgments
+** TODO Introduction
+** TODO Literature Review - Introduction
+** TODO Literature Review - Section 1
+** TODO Literature Review - Section 2
+** TODO Literature Review - Section 3
+** REVISIONS_DONE Chapter 1 - Introduction & Conclusion
+** REVISIONS_DONE Chapter 1 - Section 1
+** REVISIONS_DONE Chapter 1 - Section 2
+** REVISIONS_DONE Chapter 1 - Section 3
+** SECOND_DRAFT Chapter 2 - Introduction & Conclusion
+** SECOND_DRAFT Chapter 2 - Section 1
+** SECOND_DRAFT Chapter 2 - Section 2
+** SECOND_DRAFT Chapter 2 - Section 3
+** STARTED Chapter 3 - Introduction & Conclusion
+** STARTED Chapter 3 - Section 1
+** STARTED Chapter 3 - Section 2
+** STARTED Chapter 3 - Section 3
+** TODO Chapter 4 - Introduction & Conclusion
+** STARTED Chapter 4 - Section 1
+** STARTED Chapter 4 - Section 2
+** STARTED Chapter 4 - Section 3
+** TODO Future work & Conclusion
