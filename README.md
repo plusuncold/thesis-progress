@@ -2,7 +2,7 @@
 
 A simple little script to log progress on the state of parts of a thesis and the page count. The script watches for a thesis PDF and an org file changing and updates the graphs.
 
-![][combined.png]
+![](combined.png)
 
 ## State file
 
