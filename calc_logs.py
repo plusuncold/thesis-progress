@@ -32,7 +32,13 @@ class PDFChangeWatcher(PatternMatchingEventHandler):
         print("Inited PDF watcher to log out to " + output_path)
     
     def handleChange(self, event):
-        Thread(target=delayed_call_to_write_pdf_file_log, args=(event.src_path, self.output_path)).start()
+        # Only log out if this is a different time from the previous time (export
+        # triggers multiple modification calls) and page_count is not empty
+        current_time = getCurrentTime()
+        global previous_time
+        if deltaTimes(current_time, previous_time) > DELTA_TIMES_NEW_ENTRY:
+            Thread(target=delayed_call_to_write_pdf_file_log, args=(event.src_path, self.output_path)).start()
+            previous_time = current_time
         
 
     def on_modified(self, event):
@@ -59,26 +65,24 @@ class OrgFileChangeWatcher(PatternMatchingEventHandler):
         self.handleChange(event)
         
 def delayed_call_to_write_pdf_file_log(watched_file_page: str, log_path: str):
+    current_time = getCurrentTime()
     time.sleep(SLEEP_TIME_FROM_MODIFY)
-    write_pdf_file_log(watched_file_page, log_path)
+    try:
+        write_pdf_file_log(watched_file_page, log_path, current_time)
+    except:
+        pass
 
 # on change:
 #     get timestamp
 #     get page count
 #     add timestamp and page count to a csv
-def write_pdf_file_log(watched_file_path: str, log_path: str):
-    current_time = getCurrentTime()
+def write_pdf_file_log(watched_file_path: str, log_path: str, current_time):
     page_count = get_page_count(watched_file_path)
     word_count = get_word_count(watched_file_path)
 
-    # Only log out if this is a different time from the previous time (export
-    # triggers multiple modification calls) and page_count is not empty
-    global previous_time
-    if deltaTimes(current_time, previous_time) > DELTA_TIMES_NEW_ENTRY and page_count and word_count:
+    if page_count and word_count:
         print("\nThesis pdf has changed")
         write_information_to_log_file(current_time,page_count,word_count,log_path)
-        previous_time = current_time
-
         replot_count_graphs()
     
 def write_org_file_log(watched_file_path: str, log_path: str):
